@@ -39,10 +39,10 @@ CREATE TABLE oceny (
     FOREIGN KEY (nr_ucznia) REFERENCES nazwiska(nr_ucznia)
 );
 
-INSERT INTO nazwiska(nr_ucznia, nazwisko, imie1, imie2)
-VALUES (9201, "Adamczuk", "Agata", "");
-INSERT INTO nazwiska
-VALUES (9802, "Adamiuk", "Marta", "");
+--INSERT INTO nazwiska(nr_ucznia, nazwisko, imie1, imie2)
+--VALUES (9201, "Adamczuk", "Agata", "");
+--INSERT INTO nazwiska
+--VALUES (9802, "Adamiuk", "Marta", "");
 
 -- sqlite3 baza.db < szkola.sql
 -- sqlite3 baza.db
