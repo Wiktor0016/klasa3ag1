@@ -6,8 +6,16 @@ import sqlite3
 
 def kwerenda1(cur):
     cur.execute("""
-        SELECT AVG(pol) FROM oceny
+        SELECT klasa, COUNT(nazwisko) AS ilu FROM klasy
+        INNER JOIN uczniowie ON klasy.id=uczniowie.id_klasa
+        GROUP BY klasa
+        ORDER BY ilu DESC
     """)
+        # ORDER BY klasa ASC
+        # SELECT klasa, COUNT(nazwisko) FROM klasy
+        # ~SELECT klasa, nazwisko, imie FROM klasy
+        # ~INNER JOIN uczniowie ON klasy.id=uczniowie.id_klasa
+        # ~WHERE klasa='1A'
     # ~SELECT nazwisko, imie1, dzien, miesiac, rok FROM nazwiska
     # ~INNER JOIN dane_osobowe
     # ~ON nazwiska.nr_ucznia=dane_osobowe.nr_ucznia
@@ -20,8 +28,8 @@ def kwerenda1(cur):
 
 def main(args):
     ### KONFIGURACJA ###
-    baza_nazwa = 'szkola'
-    tabele = ['nazwiska', 'dane_osobowe', 'oceny']
+    baza_nazwa = 'uczniowie'
+    tabele = ['uczniowie', 'klasy', 'przedmioty', 'oceny']
     ####################
     
     con = sqlite3.connect(baza_nazwa + '.db')
